@@ -48,7 +48,7 @@ void	death_checker(t_philo *philo)
 				break ;
 			}
 			i++;
-			ft_usleep(100, philo);
+			ft_usleep(10, philo);
 		}
 	}
 }
