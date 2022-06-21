@@ -35,7 +35,7 @@ INCLUDES	= -Iincludes
 all:	$(NAME)
 
 $(NAME): $(OBJS) main.c
-		$(CC) $(CFLAGS) $(INCLUDES) main.c $(OBJS) -o $@
+		$(CC) $(CFLAGS) $(CHECK) $(INCLUDES) main.c $(OBJS) -o $@
 
 $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
 	mkdir -p $(OBJS_DIR)

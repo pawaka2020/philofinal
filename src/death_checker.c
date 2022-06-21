@@ -16,6 +16,14 @@
 //a mutex is placed to prevent non-death messages from threads to be posted
 //at the same time as this. 
 //a slight sleep is included at the end of the loop to minimize errrors.
+int	die(long time, long dead, t_philo *philo)
+{
+	if (odd_num(philo->num) == 1)
+		return (time > dead);
+	else
+		return (time >= dead);
+}
+
 void	death_checker(t_philo *philo)
 {
 	int			i;
@@ -31,7 +39,7 @@ void	death_checker(t_philo *philo)
 		{
 			time = s_to_m();
 			dead = philo->info[i].death_timer;
-			if (time >= dead)
+			if(die(time, dead, philo))
 			{
 				philo->dead = 1;
 				pthread_mutex_lock(&philo->miniphone);

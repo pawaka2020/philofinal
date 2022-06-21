@@ -18,9 +18,7 @@
 # include <pthread.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <limits.h>
 # include <sys/time.h>
-# include <semaphore.h>
 
 enum e_status{ eating, sleeping, thinking, forking};
 
