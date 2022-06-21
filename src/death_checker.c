@@ -39,7 +39,7 @@ void	death_checker(t_philo *philo)
 		{
 			time = s_to_m();
 			dead = philo->info[i].death_timer;
-			if(die(time, dead, philo))
+			if (die(time, dead, philo))
 			{
 				philo->dead = 1;
 				pthread_mutex_lock(&philo->miniphone);
