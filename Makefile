@@ -11,44 +11,24 @@
 # **************************************************************************** #
 
 NAME	 	= philo
-
-CC			= gcc
-CFLAGS		= -Wall -Wextra -Werror -pthread
+FLAG		= -Wall -Wextra -Werror -pthread
 # to check for data race / mutex lock inversion / etc issues. 
 # but this will have a bit of performance hit and inaccuracy
 # also try not to test this on a remote/shell environment like Guacamole
 # due to the latency issues.
 CHECK		= -g -fsanitize=thread
-RM			= rm -f
-
-SRCS_DIR	= ./src
-OBJS_DIR 	= ./obj
-
-SRCS		= ft_atoi.c routine.c init_threads.c s_to_m.c thread_create.c ft_usleep.c \
-				think_to_eat.c even_num.c odd_num.c print_log.c death_checker.c free_malloc.c \
-				eat_to_sleep.c init_states.c check_invalid.c
-
-OBJS		= $(SRCS:%.c=$(OBJS_DIR)/%.o)
-
-INCLUDES	= -Iincludes
 
 all:	$(NAME)
 
-$(NAME): $(OBJS) main.c
-		$(CC) $(CFLAGS) $(CHECK) $(INCLUDES) main.c $(OBJS) -o $@
-
-$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
-	mkdir -p $(OBJS_DIR)
-	$(CC) $(INCLUDES) -c $< -o $@
-
-test: re
-		./philo 4 400 200 200 5
+$(NAME):
+	gcc -c -Iinc src/*.c
+	gcc $(FLAG) $(CHECK) main.c -Iinc *.o -o $(NAME)
 
 clean:
-		$(RM) $(OBJS)
+		rm -f *.o
 
 fclean: clean
-		$(RM) $(NAME)
+		rm $(NAME)
 
 re:		fclean all
 # a simple, self-sustaining program of two philos
