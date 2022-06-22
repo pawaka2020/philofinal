@@ -14,6 +14,7 @@
 
 //captures timestamp using gettimeofday
 //also rounds down to remove runoff error.
+//working is 20
 long	s_to_m(void)
 {
 	struct timeval	current_time;
@@ -21,7 +22,7 @@ long	s_to_m(void)
 
 	gettimeofday(&current_time, 0);
 	ms = current_time.tv_sec * 1000 + current_time.tv_usec / 1000;
-	ms /= 20;
-	ms *= 20;
+	ms /= 10;
+	ms *= 10;
 	return (ms);
 }

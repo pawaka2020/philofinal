@@ -22,7 +22,7 @@ all:	$(NAME)
 
 $(NAME):
 	gcc -c -Iinc src/*.c
-	gcc $(FLAG) $(CHECK) main.c -Iinc *.o -o $(NAME)
+	gcc $(FLAG) main.c -Iinc *.o -o $(NAME)
 
 clean:
 		rm -f *.o

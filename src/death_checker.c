@@ -18,10 +18,7 @@
 //a slight sleep is included at the end of the loop to minimize errrors.
 int	die(long time, long dead, t_philo *philo)
 {
-	if (odd_num(philo->num) == 1)
 		return (time > dead);
-	else
-		return (time >= dead);
 }
 
 void	death_checker(t_philo *philo)
@@ -43,7 +40,7 @@ void	death_checker(t_philo *philo)
 			{
 				philo->dead = 1;
 				pthread_mutex_lock(&philo->miniphone);
-				printf("%ld %d died\n", time, philo->info[i].id + 1);
+				printf("%ld %d died\n", dead, philo->info[i].id + 1);
 				pthread_mutex_unlock(&philo->miniphone);
 				break ;
 			}
